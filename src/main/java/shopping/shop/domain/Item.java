@@ -1,15 +1,15 @@
 package shopping.shop.domain;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
+@ToString
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +30,10 @@ public class Item {
     }
 
     @Builder
+    public Item(String title, String date) {
+        this.title = title;
+        this.date = date;
+    }
     public Item(Item item) {
         this.id = item.getId();
         this.title = item.getTitle();
